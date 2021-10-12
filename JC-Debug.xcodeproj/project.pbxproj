@@ -25,6 +25,8 @@
 		DE42A5FB271560C600A291A0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42A5F8271560C600A291A0 /* AuthenticationService.swift */; };
 		DE42A5FC271560C600A291A0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42A5F9271560C600A291A0 /* Logger.swift */; };
 		DE42A5FD271560C600A291A0 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42A5FA271560C600A291A0 /* UserSession.swift */; };
+		DE42A6062715656D00A291A0 /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42A6052715656D00A291A0 /* ErrorTypes.swift */; };
+		DE42A60B2715668C00A291A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42A60A2715668C00A291A0 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		DE42A5F8271560C600A291A0 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		DE42A5F9271560C600A291A0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		DE42A5FA271560C600A291A0 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		DE42A6052715656D00A291A0 /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
+		DE42A60A2715668C00A291A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 				DE42A5F8271560C600A291A0 /* AuthenticationService.swift */,
 				DE42A5F9271560C600A291A0 /* Logger.swift */,
 				DE42A5FA271560C600A291A0 /* UserSession.swift */,
+				DE42A6052715656D00A291A0 /* ErrorTypes.swift */,
+				DE42A60A2715668C00A291A0 /* User.swift */,
 			);
 			path = AWSHandler;
 			sourceTree = "<group>";
@@ -305,8 +311,10 @@
 				DE42A5AB2714BFF700A291A0 /* ViewController.swift in Sources */,
 				DE42A5A72714BFF700A291A0 /* AppDelegate.swift in Sources */,
 				DE42A5FD271560C600A291A0 /* UserSession.swift in Sources */,
+				DE42A60B2715668C00A291A0 /* User.swift in Sources */,
 				DE42A5A92714BFF700A291A0 /* SceneDelegate.swift in Sources */,
 				DE42A5FB271560C600A291A0 /* AuthenticationService.swift in Sources */,
+				DE42A6062715656D00A291A0 /* ErrorTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

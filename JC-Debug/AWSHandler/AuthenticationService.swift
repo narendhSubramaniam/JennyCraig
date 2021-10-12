@@ -1,5 +1,6 @@
 
 import UIKit
+import Combine
 import Amplify
 
 enum AuthenticationState {
@@ -33,7 +34,7 @@ public final class AuthenticationService {
         // 3
         case .success:
           guard let authUser = Amplify.Auth.getCurrentUser() else {
-            let authError = IsolationNationError.unexpctedAuthResponse
+            let authError = JCDebugError.unexpctedAuthResponse
             logger.logError(authError)
             signOut()
             promise(.failure(authError))
@@ -75,7 +76,7 @@ public final class AuthenticationService {
             if case .confirmUser = amplifyResult.nextStep {
               promise(.success(.awaitingConfirmation(username, password)))
             } else {
-              let error = IsolationNationError.unexpctedAuthResponse
+              let error = JCDebugError.unexpctedAuthResponse
               logger.logError(error.localizedDescription)
               promise(.failure(error))
             }
@@ -104,9 +105,9 @@ public final class AuthenticationService {
               // 3
               // 1
               guard let authUser = Amplify.Auth.getCurrentUser() else {
-                let authError = IsolationNationError.unexpctedAuthResponse
+                let authError = JCDebugError.unexpctedAuthResponse
                 logger.logError(authError)
-                promise(.failure(IsolationNationError.unexpctedAuthResponse))
+                promise(.failure(JCDebugError.unexpctedAuthResponse))
                 signOut()
                 return
               }
@@ -174,7 +175,7 @@ public final class AuthenticationService {
 
         // 4
         guard let authUser = Amplify.Auth.getCurrentUser() else {
-          let authError = IsolationNationError.unexpctedAuthResponse
+          let authError = JCDebugError.unexpctedAuthResponse
           logger.logError(authError)
           signOut()
           return
