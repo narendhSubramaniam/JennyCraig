@@ -118,7 +118,7 @@ class JCPasswordResetController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(noti: Notification) {
 
         guard let userInfo = noti.userInfo else { return }
-        guard var keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
 
     }
@@ -200,7 +200,7 @@ class JCPasswordResetController: UIViewController, UITextFieldDelegate {
            return true
        }
 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
 
         validator.validateField(textField) { _ in
 

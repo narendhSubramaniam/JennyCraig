@@ -270,12 +270,12 @@ func getFormattedRejuvenationDuration(timeInterval: TimeInterval) -> String {
 func togglePassword(textField: CustomTextField, sender: UIButton) {
 
         if sender.tag == 0 {
-        textField.leftImage = UIImage(named: "pass_icon-1")
+       // textField.leftImage = UIImage(named: "pass_icon-1")
         sender.tag = 1
         textField.isSecureTextEntry = false
 
     } else {
-        textField.leftImage = UIImage(named: "pass_icon_h")
+      //  textField.leftImage = UIImage(named: "pass_icon_h")
         sender.tag = 0
         textField.isSecureTextEntry = true
     }
@@ -329,28 +329,28 @@ func showAlertIfAppUpdateAvailable() {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
 
                         let alertController = UIAlertController(title: Identifiers.Message.NewVersionAvailable, message:
-                            Identifiers.Message.NewVersionUpdate, preferredStyle: UIAlertControllerStyle.alert)
+                                                                    Identifiers.Message.NewVersionUpdate, preferredStyle: UIAlertController.Style.alert)
                         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                             openAppStoreLinkToUpdate()
                         }))
                         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_: UIAlertAction!) in
                                         if let container = UIApplication.topViewController() {
 
-                                            if container is JCSelfMonitorViewController || container is JCProgressViewController || container is JCContactViewController || container is JCMoreViewController {
-
+//                                            if container is JCSelfMonitorViewController || container is JCProgressViewController || container is JCContactViewController || container is JCMoreViewController {
+//
+//                                                for view in container.view.subviews {
+//                                                    if let spinnerView = container.tabBarController?.view.viewWithTag(100000) {
+//                                                        spinnerView.removeFromSuperview()
+//                                                    }
+//                                                }
+//
+//                                            } else {
                                                 for view in container.view.subviews {
                                                     if let spinnerView = container.tabBarController?.view.viewWithTag(100000) {
                                                         spinnerView.removeFromSuperview()
                                                     }
                                                 }
-
-                                            } else {
-                                                for view in container.view.subviews {
-                                                    if let spinnerView = container.tabBarController?.view.viewWithTag(100000) {
-                                                        spinnerView.removeFromSuperview()
-                                                    }
-                                                }
-                                            }
+                                            //}
                                         }
                         }))
 
@@ -384,8 +384,8 @@ func openAppStoreLinkToUpdate() {
 func showAlertIfTrackingNotAllowedInFutureDays() {
 
     let title = Identifiers.Message.cantTrackOnADayInTheFuture
-    let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-    let messageFont = [NSAttributedStringKey.font: UIFont(name: "SFProText-Bold", size: 17.0)! ]
+    let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+    let messageFont = [NSAttributedString.Key.font: UIFont(name: "SFProText-Bold", size: 17.0)! ]
     let messageAttrString = NSMutableAttributedString(string: title, attributes: messageFont)
     alertController.setValue(messageAttrString, forKey: "attributedMessage")
     alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

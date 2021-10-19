@@ -53,13 +53,18 @@ class JCCreateProfileController: UIViewController, UITextFieldDelegate, UITextVi
         
         self.continueButton.backgroundColor = UIColor(red: 152/255, green: 164/255, blue: 174/255, alpha: 1.0)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         // To disable Automatic Strong Password from Password textField
-        if #available(iOS 10.0, *) {
-            passwordTextField.textContentType = UITextContentType("")
-            confirmPasswordTextField.textContentType = UITextContentType("")
+        
+        if #available(iOS 12, *) {
+            passwordTextField.textContentType = .newPassword
+            confirmPasswordTextField.textContentType = .newPassword
+
+        } else {
+            passwordTextField.textContentType = .init(rawValue: "")
+            confirmPasswordTextField.textContentType = .init(rawValue: "")
         }
         
         self.hideKeyboard()
@@ -213,7 +218,7 @@ class JCCreateProfileController: UIViewController, UITextFieldDelegate, UITextVi
     
     @objc func keyboardWillShow(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
-        guard var keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
     }
     
@@ -274,7 +279,7 @@ class JCCreateProfileController: UIViewController, UITextFieldDelegate, UITextVi
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         
         validator.validateField(textField) { error in
             jcPrint(error)

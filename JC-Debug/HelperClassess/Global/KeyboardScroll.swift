@@ -25,16 +25,16 @@ extension UIViewController {
 
     func addKeyboardChangeFrameObserver(willShow willShowClosure: KeyboardHeightClosure?,
                                         willHide willHideClosure: KeyboardHeightClosure?) {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillChangeFrame,
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil, queue: OperationQueue.main, using: { [weak self](notification) in
                 if let userInfo = notification.userInfo,
-                let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-                let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
-                let curveUserInfo = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
+                   let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+                   let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+                   let curveUserInfo = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
                 let kFrame = self?.view.convert(frame, from: nil),
                 let kBounds = self?.view.bounds {
 
-                    let animationType = UIViewAnimationOptions(rawValue: curveUserInfo)
+                    let animationType = UIView.AnimationOptions(rawValue: curveUserInfo)
                                let kHeight = kFrame.size.height
                         UIView.animate(withDuration: duration, delay: 0, options: animationType, animations: {
                           if kBounds.intersects(kFrame) { // keyboard will be shown
@@ -51,6 +51,6 @@ extension UIViewController {
     }
 
     func removeKeyboardObserver() {
-        removeObserver(self, notificationName: NSNotification.Name.UIKeyboardWillChangeFrame)
+        removeObserver(self, notificationName: UIResponder.keyboardWillChangeFrameNotification)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSCognitoIdentityProvider
+import Amplify
 
 class JCSignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -229,7 +230,7 @@ class JCSignInViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func actionSignup(_ sender: Any) {
         
-        let createProfileVC = UIStoryboard.init(name: "LoginSignup", bundle: Bundle.main).instantiateViewController(withIdentifier: "JCCreateProfileController") as? JCCreateProfileController
+        let createProfileVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "JCCreateProfileController") as? JCCreateProfileController
 
         self.navigationController?.pushViewController(createProfileVC!, animated: true)
 
@@ -329,7 +330,7 @@ extension JCSignInViewController: ValidationDelegate {
 
     func validationSuccessful() {
 
-        UIViewController.displaySpinner()
+        //UIViewController.displaySpinner()
         signInUserInCognito()
     }
 
@@ -409,7 +410,10 @@ extension JCSignInViewController: AWSCognitoIdentityPasswordAuthentication {
                             AWSHandler.sharedInstance.logOut()
                             }, nil])
                     } else {
-                        self.checkUserType()
+                        
+                        self.popupAlert(title: "Success", message: "You have been logined successfully", actionTitles: ["Ok"], actions: [ {action1 in
+                            }, nil])
+                       // self.checkUserType()
                     }
                 }
 

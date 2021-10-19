@@ -68,7 +68,7 @@ class JCConfirmEmailController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        UIViewController.removeSpinner()
+       // UIViewController.removeSpinner()
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -112,6 +112,9 @@ extension JCConfirmEmailController: AWSCognitoIdentityPasswordAuthentication {
     public func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource
         jcPrint("getDetailscalled")
+//        self.popupAlert(title: "Success", message: "Registered successfully", actionTitles: ["OK"], actions: [ {action1 in
+//            UIViewController.removeSpinner()
+//            }, nil])
     }
 
     public func didCompleteStepWithError(_ error: Error?) {
@@ -141,15 +144,15 @@ extension JCConfirmEmailController: AWSCognitoIdentityPasswordAuthentication {
             } else {
 
                 do {
-                    AuthController.setUsername(username: self.emailID.trimmingTrailingSpaces.lowercased())
-                    try AuthController.setPassword(username: self.emailID.trimmingTrailingSpaces.lowercased(), password: passwordLocalSignup)
+//                    AuthController.setUsername(username: self.emailID.trimmingTrailingSpaces.lowercased())
+//                    try AuthController.setPassword(username: self.emailID.trimmingTrailingSpaces.lowercased(), password: passwordLocalSignup)
                 } catch {
                     jcPrint("Error signing in: \(error.localizedDescription)")
                 }
 
                 countHomeScreenDisplayed = 0
                 jcPrint(Settings.currentUser?.accessToken ?? "token")
-                JCAnalyticsManager.shared.logEvent(eventName: "login")
+             //   JCAnalyticsManager.shared.logEvent(eventName: "login")
 
                 AWSHandler.sharedInstance.userDetailsCompletionBlock = { (error) -> Void in
 
@@ -163,7 +166,7 @@ extension JCConfirmEmailController: AWSCognitoIdentityPasswordAuthentication {
 
                         if previousController is JCSignInViewController {
                             iswebUser = true
-                            idForWebUser = AuthController.getUserName()!
+                         //   idForWebUser = AuthController.getUserName()!
                             let createProfileVC = UIStoryboard.profileCreator()
                             self.navigationController?.pushViewController(createProfileVC!, animated: true)
 

@@ -140,7 +140,7 @@ extension UITextField {
 
     func setBottomLine(borderColor: UIColor) {
 
-        self.borderStyle = UITextBorderStyle.none
+        self.borderStyle = UITextField.BorderStyle.none
         self.backgroundColor = UIColor.clear
 
         let borderLine = UIView()
@@ -399,14 +399,14 @@ extension String {
 
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
 
         return ceil(boundingBox.height)
     }
 
     func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
 
         return ceil(boundingBox.width)
     }
@@ -516,7 +516,7 @@ extension UIView {
             viewsDictionary[key] = view
         }
 
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: formate, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: formate, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
 
     }
 

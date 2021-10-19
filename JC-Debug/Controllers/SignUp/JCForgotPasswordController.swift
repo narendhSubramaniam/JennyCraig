@@ -73,14 +73,14 @@ class JCForgotPasswordController: UIViewController, UITextFieldDelegate {
     private func registerKeyboardNotification() {
         
         //Add keyboard notification
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
     }
     
     private func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     //---------------------------------
     // MARK: - Notification Center
@@ -88,7 +88,7 @@ class JCForgotPasswordController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillHide(notification: Notification) {
         
-        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as? Double
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         self.view.frame.origin.y = 0
         UIView.animate(withDuration: duration!) {
             self.view.layoutIfNeeded()
@@ -97,8 +97,8 @@ class JCForgotPasswordController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: Notification) {
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as? Double
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             // if using constraints
             //self.view.frame.origin.y -= keyboardSize.height/2
             if view.frame.origin.y == 0 {
@@ -146,7 +146,7 @@ class JCForgotPasswordController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validator.validateField(textField) { _ in
             
         }

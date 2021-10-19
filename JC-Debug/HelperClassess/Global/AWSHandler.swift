@@ -311,8 +311,8 @@ class AWSHandler: NSObject {
        }
 
     func callResetPopUpFlag() {
-        let resetPopUpViewModel = ResetPopUpViewModel()
-        resetPopUpViewModel.resetPopUpFlag()
+//        let resetPopUpViewModel = ResetPopUpViewModel()
+//        resetPopUpViewModel.resetPopUpFlag()
     }
 }
 

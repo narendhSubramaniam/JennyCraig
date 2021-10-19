@@ -66,7 +66,7 @@ class JCAccountInfoController: UIViewController, UITextViewDelegate {
     var jennyID = ""
     private var validator = Validator()
     weak var containerDelegate: UpdateContainerViewDelegate?
-    private var resetGoalViewModel: ResetGoalViewModel!
+   // private var resetGoalViewModel: ResetGoalViewModel!
 
     // AWS
     var pool: AWSCognitoIdentityUserPool?
@@ -377,22 +377,22 @@ class JCAccountInfoController: UIViewController, UITextViewDelegate {
 
     //set up view model handler
     private func setUpHandlerForResetGoal() {
-        resetGoalViewModel.successViewClosure = {(serviceType) in            UIViewController.removeSpinner()
-
-            switch serviceType {
-            case .resetGoal:
-                JCManager.shared.cleanUp()
-                Identifiers.APPDELEGATE?.window?.rootViewController = UIStoryboard.homeNavigation()
-            }
-        }
-
-        self.resetGoalViewModel.showAlertClosure = { [weak self] (message) in
-            DispatchQueue.main.async {
-                UIViewController.removeSpinner()
-                self?.popupAlert(title: "", message: message, actionTitles: ["Ok"], actions: [ {action1 in
-                    }, nil])
-            }
-            } as ((String) -> Void)
+//        resetGoalViewModel.successViewClosure = {(serviceType) in            UIViewController.removeSpinner()
+//
+//            switch serviceType {
+//            case .resetGoal:
+//                JCManager.shared.cleanUp()
+//                Identifiers.APPDELEGATE?.window?.rootViewController = UIStoryboard.homeNavigation()
+//            }
+//        }
+//
+//        self.resetGoalViewModel.showAlertClosure = { [weak self] (message) in
+//            DispatchQueue.main.async {
+//                UIViewController.removeSpinner()
+//                self?.popupAlert(title: "", message: message, actionTitles: ["Ok"], actions: [ {action1 in
+//                    }, nil])
+//            }
+//            } as ((String) -> Void)
     }
 
     func resetGoalPressed() {
@@ -403,10 +403,10 @@ class JCAccountInfoController: UIViewController, UITextViewDelegate {
             return
         }
 
-        resetGoalViewModel = ResetGoalViewModel()
-        self.setUpHandlerForResetGoal()
-        UIViewController.displaySpinner()
-        resetGoalViewModel.getResetGoal(timeStamp: timeStampForResetGoal, startingWeight: self.startingWeightTextField.text!, goalWeight: self.goalWeightTextField.text!, startingWeightDate: timeStampForResetGoal)
+//        resetGoalViewModel = ResetGoalViewModel()
+//        self.setUpHandlerForResetGoal()
+//        UIViewController.displaySpinner()
+//        resetGoalViewModel.getResetGoal(timeStamp: timeStampForResetGoal, startingWeight: self.startingWeightTextField.text!, goalWeight: self.goalWeightTextField.text!, startingWeightDate: timeStampForResetGoal)
     }
 
 }

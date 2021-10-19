@@ -42,7 +42,7 @@ var isMessageShowing = false
 var isEditWeightFromProgress: Bool = false
 var isViewEditing: Bool = false
 //updateFood
-var foodObjectToEdit: FoodItemsList?
+//var foodObjectToEdit: FoodItemsList?
 
 var labelTimerOnRejuvenationCell = UILabel()
 var rapidResultPeriod = ""

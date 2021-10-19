@@ -56,16 +56,16 @@ class JCEmailAlreadyExistVC: UIViewController {
 
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.destination is JCPasswordResetController {
-            //send data
-            if let controller = segue.destination as? JCPasswordResetController {
-                if let defaults = AuthController.getUserName() as? String {
-                    controller.userNameString = defaults
-                    controller.containerDelegate = containerDelegate
-                }
-            }
-
-        }
+//        if segue.destination is JCPasswordResetController {
+//            //send data
+//            if let controller = segue.destination as? JCPasswordResetController {
+//                if let defaults = AuthController.getUserName() as? String {
+//                    controller.userNameString = defaults
+//                    controller.containerDelegate = containerDelegate
+//                }
+//            }
+//
+//        }
     }
 
     private func setUpHandler() {

@@ -17,7 +17,7 @@ protocol APIClient {
 extension APIClient {
 
     typealias JSONTaskCompletionHandler = (Codable?, APIError?) -> Void
-    typealias FitbitJSONTaskCompletionHandler = (Codable?, FitBitError?) -> Void
+//    typealias FitbitJSONTaskCompletionHandler = (Codable?, FitBitError?) -> Void
 
     private func decodingTask<T: Codable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
 
@@ -93,57 +93,6 @@ extension APIClient {
         return task
     }
 
-    private func decodingFitbitTask<T: Codable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping FitbitJSONTaskCompletionHandler) -> URLSessionDataTask {
-
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse else {
-
-                if let xyz = error as NSError? {
-                    jcPrint("error is:", xyz)
-                    jcPrint(xyz.code)
-                }
-                completion(nil, error as? FitBitError)
-                return
-            }
-
-            if httpResponse.statusCode == 200 {
-                if let data = data {
-                    do {
-
-                        let obj  = try? JSONSerialization.jsonObject(with: data, options: [])
-                        jcPrint("response is:", obj as Any)
-
-                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
-                        completion(genericModel, nil)
-                    } catch {
-                        completion(nil, error as? FitBitError)
-                    }
-                } else {
-                    completion(nil, nil)
-                }
-
-            } else {
-                if let data = data {
-                    do {
-
-                        let obj  = try? JSONSerialization.jsonObject(with: data, options: [])
-                        jcPrint("error response is:", obj as Any)
-
-                        let genericModel = try JSONDecoder().decode(FitBitError.self, from: data)
-                        completion(genericModel, nil)
-                    } catch {
-                        completion(nil, error as? FitBitError)
-                    }
-                } else {
-                    completion(nil, nil)
-                }
-
-            }
-
-        }
-        return task
-    }
-
     func fetch<T: Codable>(with request: URLRequest, decode: @escaping (Codable) -> T?, completion: @escaping (APIResponse<T, APIError>) -> Void) {
 
         let task = decodingTask(with: request, decodingType: T.self) { (json, error) in
@@ -162,26 +111,6 @@ extension APIClient {
                     completion(.success(value))
                 } else {
                     completion(.failure(.couldNotDecodeJSON))
-                }
-            }
-
-        }
-        task.resume()
-    }
-
-    func fetchFitbit<T: Codable>(with request: URLRequest, decode: @escaping (Codable) -> T?, completion: @escaping (APIResponse<T, FitBitError>) -> Void) {
-
-        let task = decodingFitbitTask(with: request, decodingType: T.self) { (json, error) in
-            // MARK: change to main queue
-            DispatchQueue.main.async {
-                guard let json = json else {
-                    completion(.failure(error!))
-                    return
-                }
-                if let value = decode(json) {
-                    completion(.success(value))
-                } else {
-                    completion(.failure(error!))
                 }
             }
 
