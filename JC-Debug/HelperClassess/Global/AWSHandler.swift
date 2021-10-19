@@ -63,6 +63,7 @@ class AWSHandler: NSObject {
         JCManager.shared.state = .collapsed
         self.user?.getDetails()
 
+        
     }
 
     func getNewToken(username: String) {

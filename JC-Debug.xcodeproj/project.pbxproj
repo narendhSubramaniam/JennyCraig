@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B722BB6271EFF91002E685F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8B722BB5271EFF91002E685F /* SDWebImage */; };
+		8B722BB8271EFF91002E685F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8B722BB7271EFF91002E685F /* SDWebImageMapKit */; };
+		8B722BBE271F00FF002E685F /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 8B722BBD271F00FF002E685F /* SwiftyGif */; };
+		8B722BC6271F0531002E685F /* animatedJ.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B722BC5271F0531002E685F /* animatedJ.gif */; };
 		8B98ABBC2715A83A00635BE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B98ABBB2715A83A00635BE1 /* Main.storyboard */; };
 		8B98ABC22715AB7C00635BE1 /* NotCompatibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B98ABC12715AB7C00635BE1 /* NotCompatibleViewController.swift */; };
 		8B9942832715B0C9006254BF /* GradientPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B99427D2715B0C9006254BF /* GradientPoint.swift */; };
@@ -120,6 +124,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B722BC5271F0531002E685F /* animatedJ.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animatedJ.gif; sourceTree = "<group>"; };
 		8B98ABBB2715A83A00635BE1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8B98ABC12715AB7C00635BE1 /* NotCompatibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotCompatibleViewController.swift; sourceTree = "<group>"; };
 		8B99427D2715B0C9006254BF /* GradientPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientPoint.swift; sourceTree = "<group>"; };
@@ -220,12 +225,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE42A5E12714C3BE00A291A0 /* AWSPluginsCore in Frameworks */,
+				8B722BB8271EFF91002E685F /* SDWebImageMapKit in Frameworks */,
 				DE42A5DB2714C3BE00A291A0 /* Amplify in Frameworks */,
+				8B722BB6271EFF91002E685F /* SDWebImage in Frameworks */,
 				DE42A5E72714C3BE00A291A0 /* AWSAPIPlugin in Frameworks */,
 				DE42A5E32714C3BE00A291A0 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				DE42A5E52714C3BE00A291A0 /* AWSDataStorePlugin in Frameworks */,
 				DE42A5DD2714C3BE00A291A0 /* AWSCognitoAuthPlugin in Frameworks */,
 				DE42A5DF2714C3BE00A291A0 /* AWSS3StoragePlugin in Frameworks */,
+				8B722BBE271F00FF002E685F /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +513,7 @@
 		DE42A5A52714BFF700A291A0 /* JC-Debug */ = {
 			isa = PBXGroup;
 			children = (
+				8B722BC5271F0531002E685F /* animatedJ.gif */,
 				DE42A5B42714BFF800A291A0 /* Info.plist */,
 				DE2D304627177222005BB820 /* Resources */,
 				8B9943582715B59C006254BF /* Models */,
@@ -560,6 +569,9 @@
 				DE42A5E22714C3BE00A291A0 /* AWSPinpointAnalyticsPlugin */,
 				DE42A5E42714C3BE00A291A0 /* AWSDataStorePlugin */,
 				DE42A5E62714C3BE00A291A0 /* AWSAPIPlugin */,
+				8B722BB5271EFF91002E685F /* SDWebImage */,
+				8B722BB7271EFF91002E685F /* SDWebImageMapKit */,
+				8B722BBD271F00FF002E685F /* SwiftyGif */,
 			);
 			productName = "JC-Debug";
 			productReference = DE42A5A32714BFF700A291A0 /* JC-Debug.app */;
@@ -634,6 +646,8 @@
 			mainGroup = DE42A59A2714BFF700A291A0;
 			packageReferences = (
 				DE42A5D92714C3BE00A291A0 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				8B722BB4271EFF91002E685F /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				8B722BBC271F00FF002E685F /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			productRefGroup = DE42A5A42714BFF700A291A0 /* Products */;
 			projectDirPath = "";
@@ -655,6 +669,7 @@
 				8BE8CAE22716D5AB0080AF1F /* JC_App_TitleBG_V5_1080.mp4 in Resources */,
 				8B98ABBC2715A83A00635BE1 /* Main.storyboard in Resources */,
 				DE42A5B32714BFF800A291A0 /* LaunchScreen.storyboard in Resources */,
+				8B722BC6271F0531002E685F /* animatedJ.gif in Resources */,
 				DE42A5B02714BFF800A291A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1087,6 +1102,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8B722BB4271EFF91002E685F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.1;
+			};
+		};
+		8B722BBC271F00FF002E685F /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
 		DE42A5D92714C3BE00A291A0 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
@@ -1098,6 +1129,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8B722BB5271EFF91002E685F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B722BB4271EFF91002E685F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		8B722BB7271EFF91002E685F /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B722BB4271EFF91002E685F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		8B722BBD271F00FF002E685F /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B722BBC271F00FF002E685F /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
 		DE42A5DA2714C3BE00A291A0 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE42A5D92714C3BE00A291A0 /* XCRemoteSwiftPackageReference "amplify-ios" */;

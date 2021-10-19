@@ -5,6 +5,8 @@
 
 import Foundation
 import UIKit
+import ImageIO
+import SwiftyGif
 
 extension UIViewController {
 
@@ -102,14 +104,14 @@ extension UIViewController {
         indicator.startAnimating()
         indicator.center = spinnerView.center
 
-//        let imageView = addMicrowaveanimation()
-//        //        imageView.frame = CGRect(x: spinnerView.bounds.midX-70/2, y: spinnerView.bounds.midY, width: 70, height: 49)
-//        //imageView.frame = CGRect(x: spinnerView.bounds.midX-150/2, y: spinnerView.bounds.midY, width: 150, height: 120)
-//        imageView.frame = CGRect(x: spinnerView.bounds.midX-100/2, y: spinnerView.bounds.midY-50, width: 100, height: 100)
-//
-//        //  DispatchQueue.main.async {
-//        // spinnerView.addSubview(indicator)
-//        spinnerView.addSubview(imageView)
+        let imageView = addMicrowaveanimation()
+        //        imageView.frame = CGRect(x: spinnerView.bounds.midX-70/2, y: spinnerView.bounds.midY, width: 70, height: 49)
+        //imageView.frame = CGRect(x: spinnerView.bounds.midX-150/2, y: spinnerView.bounds.midY, width: 150, height: 120)
+        imageView.frame = CGRect(x: spinnerView.bounds.midX-100/2, y: spinnerView.bounds.midY-50, width: 100, height: 100)
+
+        //  DispatchQueue.main.async {
+        // spinnerView.addSubview(indicator)
+        spinnerView.addSubview(imageView)
 
         if let container = UIApplication.topViewController() {
 //            if container is JCSelfMonitorViewController || container is JCProgressViewController || container is JCContactViewController || container is JCMoreViewController {
@@ -123,18 +125,19 @@ extension UIViewController {
         // }
     }
 
-//    class func addMicrowaveanimation() -> UIImageView {
-//        do {
-//            //   let gif = try UIImage(gifName: "microwave.gif")
-//            let gif = try UIImage(gifName: "animatedJ.gif")
-//            let imageView = UIImageView()
-//            imageView.setGifImage(gif)
-//            return imageView
-//        } catch {
-//            jcPrint(error)
-//        }
-//        return UIImageView()
-//    }
+    class func addMicrowaveanimation() -> UIImageView {
+        do {
+            //   let gif = try UIImage(gifName: "microwave.gif")
+        
+            let gif = try UIImage(gifName: "animatedJ.gif")
+            let imageView = UIImageView()
+            imageView.setGifImage(gif)
+            return imageView
+        } catch {
+            jcPrint(error)
+        }
+        return UIImageView()
+    }
 
     class func removeSpinner(spinner: UIView? = nil) {
         DispatchQueue.main.async {

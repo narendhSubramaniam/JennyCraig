@@ -73,7 +73,7 @@ class JCEmailAlreadyExistVC: UIViewController {
         viewModel.successViewClosure = { [weak self] (response) in
             DispatchQueue.main.async {
 
-                //UIViewController.removeSpinner()
+                UIViewController.removeSpinner()
 
                 guard (response.successful != 0) else {
 
@@ -93,7 +93,7 @@ class JCEmailAlreadyExistVC: UIViewController {
         viewModel.showAlertClosure = { [weak self] (message) in
             DispatchQueue.main.async {
 
-               // UIViewController.removeSpinner()
+                UIViewController.removeSpinner()
 
                 //show alert
                 self?.popupAlert(title: "", message: message, actionTitles: ["Ok"], actions: [ {action1 in
@@ -111,7 +111,7 @@ class JCEmailAlreadyExistVC: UIViewController {
             }
 
         //  let username = AuthController.getUserName()
-         //   UIViewController.displaySpinner()
+            UIViewController.displaySpinner()
             //self.user = self.pool?.getUser(username!)
 
             self.user?.forgotPassword().continueWith {[weak self] (task: AWSTask) -> AnyObject? in
@@ -120,19 +120,19 @@ class JCEmailAlreadyExistVC: UIViewController {
 
                 }
                 DispatchQueue.main.async(execute: {
-                   // UIViewController.removeSpinner()
+                    UIViewController.removeSpinner()
 
                     if let error = task.error as NSError? {
 
                         if error.userInfo["__type"] as? String == ExceptionString.userNotFoundException.rawValue {
                             self!.popupAlert(title: "", message: Identifiers.Message.EmailNotAssociated, actionTitles: ["Ok"], actions: [ {action1 in
-                               // UIViewController.removeSpinner()
+                                UIViewController.removeSpinner()
 
                                 }, nil])
                         } else {
 
                             self?.popupAlert(title: "", message: error.userInfo["message"] as? String, actionTitles: ["Ok"], actions: [ {action1 in
-                               //  UIViewController.removeSpinner()
+                               UIViewController.removeSpinner()
                             }, nil])
 
                         }

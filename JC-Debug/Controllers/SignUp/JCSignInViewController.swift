@@ -330,7 +330,7 @@ extension JCSignInViewController: ValidationDelegate {
 
     func validationSuccessful() {
 
-        //UIViewController.displaySpinner()
+        UIViewController.displaySpinner()
         signInUserInCognito()
     }
 
@@ -421,6 +421,7 @@ extension JCSignInViewController: AWSCognitoIdentityPasswordAuthentication {
 
                     jcPrint("AWSHandler.sharedInstance.setUpAWS(called)")
                     AWSHandler.sharedInstance.setUpAWS()
+                    UIViewController.removeSpinner()
 
                 })
             }

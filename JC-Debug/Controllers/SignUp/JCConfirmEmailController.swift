@@ -68,7 +68,7 @@ class JCConfirmEmailController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-       // UIViewController.removeSpinner()
+        UIViewController.removeSpinner()
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -113,7 +113,7 @@ extension JCConfirmEmailController: AWSCognitoIdentityPasswordAuthentication {
         self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource
         jcPrint("getDetailscalled")
 //        self.popupAlert(title: "Success", message: "Registered successfully", actionTitles: ["OK"], actions: [ {action1 in
-//            UIViewController.removeSpinner()
+            UIViewController.removeSpinner()
 //            }, nil])
     }
 
